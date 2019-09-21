@@ -6,8 +6,8 @@ import os
 import urllib.parse
 
 
-BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
-CHAT_ID = os.environ.get('TELEGRAM_BOT_CHAT_ID')
+BOT_TOKEN = '900684777:AAEt_gv7ay3Uoml1MYUEdordng0JGpWc3JQ'
+CHAT_ID = '@nodoron'
 
 TELEGRAM_API_URL = 'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}&parse_mode=HTML&disable_web_page_preview'
 

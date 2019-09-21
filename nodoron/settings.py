@@ -86,5 +86,5 @@ DATABASE = {
     # 'port': '5432',
     # 'username': 'YOUR_USERNAME',
     # 'password': 'YOUR_PASSWORD',
-    'database': os.path.join(PROJECT_ROOT, '..', 'nodoron.sqlite')
+    'database': os.path.join(PROJECT_ROOT, 'nodoron.sqlite')
 }
