@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import scrapy
 from nodoron.exceptions import ResponseNotAsExceptedException
 from json import loads
