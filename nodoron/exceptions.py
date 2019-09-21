@@ -1,0 +1,2 @@
+class ResponseNotAsExceptedException(Exception):
+    pass
