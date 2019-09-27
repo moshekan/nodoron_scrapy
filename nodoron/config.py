@@ -17,11 +17,11 @@ GEO_FILTERS = [
     GeoFilter(32.155013, 34.838615, 0.5),  # Neve Amirim
     GeoFilter(32.153692, 34.842297, 0.8),  # Ben Gurion Road South
     # Ben Gurion Road North
-    GeoFilter(32.157201, 34.842492, 0.8),
+    GeoFilter(32.157201, 34.842492, 0.5),
     GeoFilter(32.152358, 34.841837, 0.5),
-    GeoFilter(32.153196, 34.842121, 1),
-    GeoFilter(32.160099, 34.841955, 0.8),
-    GeoFilter(32.162815, 34.842624, 0.8),
+    GeoFilter(32.153196, 34.842121, 0.7),
+    GeoFilter(32.160099, 34.841955, 0.5),
+    GeoFilter(32.162815, 34.842624, 0.5),
 
 
 
