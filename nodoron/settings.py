@@ -53,9 +53,7 @@ ROBOTSTXT_OBEY = False
 #}
 
 ITEM_PIPELINES = {
-   'nodoron.pipelines.GeoFilterPipeLine': 300,
    'nodoron.pipelines.ApartmentSQLitePipeline': 301,
-   'nodoron.pipelines.TelegramSenderPipeLine': 302,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -88,3 +86,6 @@ DATABASE = {
     # 'password': 'YOUR_PASSWORD',
     'database': os.path.join(PROJECT_ROOT, 'nodoron.sqlite')
 }
+
+
+LOG_FILE = "/tmp/my_log.log"

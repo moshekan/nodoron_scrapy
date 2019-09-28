@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
+from typing import List
+
 from requests import get
-import datetime
-import pytz
 import os
-import urllib.parse
 
 
 BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
@@ -28,46 +27,30 @@ APARTMENT_MESSAGE = """
 <i>ID: {id}</i>
 """
 
-STARTING_SEARCH_MESSAGE = """
-מתחיל את החיפוש של השעה {time}
-"""
 
-ERROR_MESSAGE = """
-<strong>חטפתי שגיאה</strong>
-{message}
-"""
-
-def send_message(message):
-    url = TELEGRAM_API_URL.format(token=BOT_TOKEN, chat_id=CHAT_ID, text=message)
-    response = get(url)
+def send_message(message: str, chat_id: str):
+    url = TELEGRAM_API_URL.format(token=BOT_TOKEN, chat_id=chat_id, text=message)
+    get(url).raise_for_status()
 
 
-def send_new_apartment_message(item, phone_number_list):
+def send_new_apartment_message(apartment, chat_id: str, phone_number_list: List[str]):
     whatsapp_link = '\n'.join([WHATSAPP_LINK_URL.format(
         number=number,
-        text=WHATSAPP_TEXT_FORMAT.format(address=item['street'], url=item['view_url'])
+        text=WHATSAPP_TEXT_FORMAT.format(address=apartment.street, url=apartment.view_url)
     ) for number in phone_number_list])
 
     message = APARTMENT_MESSAGE.format(
-        rooms=item.get('rooms'),
-        size=item.get('square_meters'),
-        latitude=item.get('coordinates_latitude'),
-        longitude=item.get('coordinates_longitude'),
-        neighborhood=item.get('neighborhood'),
-        title=item.get('title'),
-        price=item.get('price'),
-        merchant='עם תיווך' if item.get('merchant') else 'ללא תיווך',
-        date_added=item.get('date_added'),
-        view_url=item.get('view_url'),
-        id=item.get('id'),
+        rooms=apartment.rooms,
+        size=apartment.square_meters,
+        latitude=apartment.coordinates_latitude,
+        longitude=apartment.coordinates_longitude,
+        neighborhood=apartment.neighborhood,
+        title=apartment.title,
+        price=apartment.price,
+        merchant='עם תיווך' if apartment.merchant else 'ללא תיווך',
+        date_added=apartment.date_added,
+        view_url=apartment.view_url,
+        id=apartment.yad2_id,
         whatsapp_link=whatsapp_link
     )
-    send_message(message)
-
-
-def send_starting_search_message():
-    send_message(STARTING_SEARCH_MESSAGE.format(time=datetime.datetime.now(tz=pytz.timezone('Asia/Jerusalem')).strftime("%H:%M")))
-
-
-def send_error_message(message):
-    send_message(ERROR_MESSAGE.format(message=message))
+    send_message(message, chat_id)
