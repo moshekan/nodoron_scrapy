@@ -1,9 +1,9 @@
-from .utils.yad2_api import Yad2ApiRealEstateWrapper, Range, City
+from .utils.yad2_api import get_yad2_search_url, Range, City
 from .utils.geo_filters import GeoFilter
 
 SEARCH_URLS = [
-    Yad2ApiRealEstateWrapper(rooms=Range(4, 6), price=Range(0, 7500), city=City.TEL_AVIV),
-    Yad2ApiRealEstateWrapper(rooms=Range(4, 6), price=Range(0, 7500), city=City.HERZLIYA),
+    get_yad2_search_url(rooms=Range(4, 6), price=Range(0, 7500), city=City.TEL_AVIV),
+    get_yad2_search_url(rooms=Range(4, 6), price=Range(0, 7500), city=City.HERZLIYA),
 ]
 
 GEO_FILTERS = [
@@ -22,8 +22,4 @@ GEO_FILTERS = [
     GeoFilter(32.153196, 34.842121, 0.7),
     GeoFilter(32.160099, 34.841955, 0.5),
     GeoFilter(32.162815, 34.842624, 0.5),
-
-
-
-
 ]

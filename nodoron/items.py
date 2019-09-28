@@ -9,8 +9,9 @@ import scrapy
 
 
 class ApartmentItem(scrapy.Item):
-    id = scrapy.Field()
+    yad2_id = scrapy.Field()
     price = scrapy.Field()
+    city = scrapy.Field()
     coordinates_latitude = scrapy.Field()
     coordinates_longitude = scrapy.Field()
     street = scrapy.Field()
@@ -19,6 +20,5 @@ class ApartmentItem(scrapy.Item):
     merchant = scrapy.Field()
     date_added = scrapy.Field()
     square_meters = scrapy.Field()
-    view_url = scrapy.Field()
     rooms = scrapy.Field()
     title = scrapy.Field()
